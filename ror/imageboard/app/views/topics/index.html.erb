@@ -1,0 +1,22 @@
+<h1>Topics</h1>
+
+<% @topics.each do |topic| %>
+    <%= link_to(@topic) do %>
+        <div class="topic">
+            <h3><%= topic.title %></h3>
+             <% if topic.file.url %>
+                <span class="file">
+                        <%= image_tag(topic.file.thumb.url, :alt => "image") %>
+                </span>
+            <% end %>
+            <span><%= topic.created_at %></span>
+            <span><%= topic.poster_name %></span>
+            <span>ID #<%= topic.id %></span>
+            <p><%= topic.content %></p>
+
+        </div>
+    <% end %>
+    <hr />
+<% end %>
+
+<p><%= link_to "Add a new topic", new_board_topic_path %></p>

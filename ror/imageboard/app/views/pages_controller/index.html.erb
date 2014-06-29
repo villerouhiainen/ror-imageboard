@@ -1,0 +1,23 @@
+<h1><%= @app_name  %></h1>
+
+<div class="boards">
+    <%= link_to (boards_path) do %>
+        <h2>Boards:</h2>
+    <% end %>
+
+    <% @boards.each do |board| %>
+        <div class="board">
+            <%= link_to(board) do %>
+                <h3><%= board.abbr %> - <%= board.title %></h3> 
+                <p>
+                    <%= link_to "Edit", edit_board_path(board)  %> |
+                    <%= link_to "Delete", board, :confirm => "Are you sure?", :method => :delete %>
+                </p>
+            <% end %>
+            <hr />
+        </div>
+    <% end %>
+</div>
+
+
+<p><%= link_to "Add a new board", new_board_path %></p>

@@ -1,0 +1,35 @@
+<h1>Edit topic</h1>
+
+<%= form_for @topic, url: board_topic_path do |topic| %>
+    <% if @topic.errors.any? %>
+        <h2>Errors:</h2>
+        <ul>
+            <% @topic.errors.full_messages.each do |topic| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+    <p>
+        <%= topic.label :title  %>
+        <%= topic.text_field :title  %>
+    </p>
+    <p>
+        <%= topic.label :poster_name  %>
+        <%= topic.text_field :poster_name  %>
+    </p>
+    <p>
+        <%= topic.label :content  %>
+        <%= topic.text_area :content  %>
+    </p>
+    <p>
+        <%= topic.label :board_id  %>
+        <%= topic.text_field :board_id  %>
+    </p>
+    <p>
+        <%= topic.label :file  %>
+        <%= topic.file_field :file  %>
+    </p>
+    <p>
+        <%= topic.submit "Update topic" %>
+    </p>
+<% end %>

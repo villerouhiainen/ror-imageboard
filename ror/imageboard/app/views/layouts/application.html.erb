@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Imageboard</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="nav">
+    <ul class="boardList">
+        <li><a href="/">Home</a></li> /
+        <%  @boards.each do |board| %>
+            <li><a href="/<%= board.abbr %>"><%= board.abbr %></a></li> / 
+        <% end %>
+    </ul>
+</div>
+
+<% flash.each do |key, value| %>
+    <h3><%= value %></h3>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

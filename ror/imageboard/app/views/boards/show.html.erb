@@ -1,0 +1,32 @@
+<hr />
+<h1><%= @board.abbr  %> - <%= @board.title  %></h1>
+
+
+<%= link_to "Create a new topic", new_board_topic_path(@board) %>
+ 
+ 
+<div id="topics">
+    <% if(@board.topics.count > 0) then %>
+        <% @board.topics.each do |topic| %>
+            <%= link_to board_topic_path(@board, topic.id) do %>
+                <div class="topic">
+                    <h3><%= topic.title %></h3>
+                     <% if topic.file.url %>
+                        <span class="file">
+                            <a href="<%= topic.file.url %>">
+                                <%= image_tag(topic.file.thumb.url, :alt => "image") %>
+                            </a>
+                        </span>
+                    <% end %>
+                    <span><%= topic.created_at %></span>
+                    <span><%= topic.poster_name %></span>
+                    <span>ID #<%= topic.id %></span>
+                    <p><%= topic.content %></p>
+                </div>
+            <% end %>
+        <% end %>
+    <% else %>
+        No topics here yet! 
+        <%= link_to "Maybe create one?", new_board_topic_path(@board) %>
+    <% end %>
+</div>

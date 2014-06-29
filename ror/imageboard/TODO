@@ -1,0 +1,8 @@
+- FileUpload (https://github.com/carrierwaveuploader/carrierwave)
+    check types, size etc.
+    
+- Topics listing
+    links to /board/:id (currently /topics/:id)
+    
+- Deleting
+    :confirm not working

@@ -1,0 +1,43 @@
+<div id="topic">
+    <h1 class="title"><%= @topic.title  %></h1>
+    <% if @topic.file.url %>
+        <span class="file">
+            <a href="<%= @topic.file.url %>">
+                <%= image_tag(@topic.file.thumb.url, :alt => "image") %>
+            </a>
+        </span>
+    <% end %>
+    <span class="name">
+        <% if @topic.poster_name%>
+            <b><%= @topic.poster_name %></b>
+        <% else %>
+            <b>Anonymous</b>
+        <% end %>
+    </span>
+    <span class="url">
+        <% if @topic.file.url %>
+            <%= @topic.file.url %>
+        <% end %>        
+    <span>
+    <span class="created"><%= @topic.created_at %></span>
+    <span class="id"><b>ID <%= @topic.id %></b></span>
+    <p><%= @topic.content  %></p>
+</div>
+
+<%= link_to link_to "Edit", edit_board_topic_path %> | 
+<%= link_to 'Delete', @board_topic, :confirm => "Are you sure?", :method => :delete %>
+
+<h3>Comments</h3>
+<div id="comments">
+    <%= render @topic.comments %>
+</div>
+
+<%= form_for "board_topic_comments" do |comment| %>
+    <p>
+        <%= comment.label :body, "New comment" %><br/>
+        <%= comment.text_area :body %>
+    </p>
+    <p><%= comment.submit "Add comment" %></p>
+    </p>
+<% end %> 
+

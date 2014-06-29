@@ -1,0 +1,23 @@
+<h1>Edit board</h1>
+
+<%= form_for @board do |board| %>
+    <% if @board.errors.any? %>
+        <h2>Errors:</h2>
+        <ul>
+            <% @board.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+    <p>
+        <%= board.label :title  %>
+        <%= board.text_field :title  %>
+    </p>
+    <p>
+        <%= board.label("Abbreviation")  %>
+        <%= board.text_field :abbr  %>
+    </p>
+    <p>
+        <%= board.submit "Update post" %>
+    </p>
+<% end %>

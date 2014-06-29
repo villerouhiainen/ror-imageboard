@@ -1,0 +1,36 @@
+<h1>Add a new topic</h1>
+
+<%= form_for :topic, url: board_topics_path do |topic| %>
+    <% if @topic.errors.any? %>
+        <h2>Errors:</h2>
+        <ul>
+            <% @topic.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+    
+    
+    <%= topic.file_field :file %>
+    <%= topic.hidden_field :file_cache %>
+    
+
+
+    <p>
+        Title:
+        <%= topic.text_field :title %>
+    </p>
+    <p>
+        Content:
+        <%= topic.text_area :content %>
+    </p>
+    <p>
+        ID:
+        <%= topic.text_area :board_id %>
+    </p>
+    <p>
+        <%= topic.submit "Add a new topic" %>
+    </p>
+<% end %> 
+
+
